@@ -1,0 +1,33 @@
+from m5stack import *
+import machine
+import utime
+
+
+# 画面初期化
+axp.setLDO2Vol(2.7) #バックライト輝度調整（中くらい）
+lcd.clear()
+
+
+# MH-19B UART設定
+mhz19b = machine.UART(1, tx=0, rx=26)
+mhz19b.init(9600, bits=8, parity=None, stop=1)
+
+
+# タイムカウンタ初期値設定
+zero_tc = utime.time()
+
+
+# ZERO POINT CALIBRATION コマンド送信
+mhz19b.write(b'\xff\x01\x87\x00\x00\x00\x00\x00\x78')
+lcd.print('Zero Calibration Start!', 0, 20)
+utime.sleep(2)
+
+
+# 20分待つ（余裕見て21分）
+while utime.time() < zero_tc + (21*60) :
+    lcd.clear()
+    lcd.print(str(zero_tc + (21*60) - utime.time()), 20, 20)
+    utime.sleep(1)
+
+lcd.clear()
+lcd.print('Zero Calibration End', 0, 20)
