@@ -3,6 +3,17 @@ import machine
 import utime
 
 
+# @cinimlさんのファーム差分吸収ロジック
+class AXPCompat(object):
+    def __init__(self):
+        if( hasattr(axp, 'setLDO2Vol') ):
+            self.setLDO2Vol = axp.setLDO2Vol
+        else:
+            self.setLDO2Vol = axp.setLDO2Volt
+
+axp = AXPCompat()
+
+
 # 画面初期化
 axp.setLDO2Vol(2.7) #バックライト輝度調整（中くらい）
 lcd.clear()

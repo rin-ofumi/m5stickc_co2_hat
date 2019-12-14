@@ -21,6 +21,17 @@ AM_WKEY             = None
 co2                 = 0
 
 
+# @cinimlさんのファーム差分吸収ロジック
+class AXPCompat(object):
+    def __init__(self):
+        if( hasattr(axp, 'setLDO2Vol') ):
+            self.setLDO2Vol = axp.setLDO2Vol
+        else:
+            self.setLDO2Vol = axp.setLDO2Volt
+
+axp = AXPCompat()
+
+
 # 時計表示スレッド関数
 def time_count ():
     global Disp_mode
@@ -161,16 +172,11 @@ def co2_set_filechk():
                     AM_ID = str(filetxt[1])
                     print('- AM_ID: ' + str(AM_ID))
                 elif filetxt[0] == 'AM_WKEY' :
-                    AM_WKEY = str(filetxt[1])
-                    print('- AM_WKEY: ' + str(AM_WKEY))
+                    if len(filetxt[1]) == 16 :
+                        AM_WKEY = str(filetxt[1])
+                        print('- AM_WKEY: ' + str(AM_WKEY))
     else :
-        print('>> no [co2_set.txt] !')
-    
-    if (not len(AM_ID) == 5) and (not len(AM_WKEY) == 16) :
-        print('>> [co2_set.txt] Illegal!!')
-        AM_ID = None
-        AM_WKEY = None
-        
+        print('>> no [co2_set.txt] !')       
     return scanfile_flg
 
 
@@ -200,8 +206,6 @@ co2_set_filechk()
 if (AM_ID is not None) and (AM_WKEY is not None) : # Ambient設定情報があった場合
     import ambient
     am_co2 = ambient.Ambient(AM_ID, AM_WKEY)
-else :
-    Am_err = 1
 
 
 # RTC設定
