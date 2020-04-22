@@ -90,6 +90,12 @@ M5StickCのプログラム選択モード「APP.List」から起動させる場�
 
 # <アップデート履歴>
 
+## 【2020.04.22】 [CO2_zeropoint.py] Update!
+
+* @takashyxさんからのプルリクエストをマージ（ZERO POINT CALIBRATIONコマンド送信タイミングの間違いを修正）
+
+<br>
+
 ## 【2019.12.14】 [test_CO2_Ambient.py] Update!
 
 * UIFlow-v1.4.2 ファームへの対応。
