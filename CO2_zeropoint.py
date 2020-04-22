@@ -28,8 +28,6 @@ mhz19b.init(9600, bits=8, parity=None, stop=1)
 zero_tc = utime.time()
 
 
-# ZERO POINT CALIBRATION コマンド送信
-mhz19b.write(b'\xff\x01\x87\x00\x00\x00\x00\x00\x78')
 lcd.print('Zero Calibration Start!', 0, 20)
 utime.sleep(2)
 
@@ -39,6 +37,10 @@ while utime.time() < zero_tc + (21*60) :
     lcd.clear()
     lcd.print(str(zero_tc + (21*60) - utime.time()), 20, 20)
     utime.sleep(1)
+
+# ZERO POINT CALIBRATION コマンド送信
+mhz19b.write(b'\xff\x01\x87\x00\x00\x00\x00\x00\x78')
+utime.sleep(2)
 
 lcd.clear()
 lcd.print('Zero Calibration End', 0, 20)
