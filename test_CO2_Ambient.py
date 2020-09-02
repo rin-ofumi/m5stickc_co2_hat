@@ -209,7 +209,7 @@ if (AM_ID is not None) and (AM_WKEY is not None) : # Ambient設定情報があ�
 
 
 # RTC設定
-utime.localtime(ntptime.settime())
+ntp = ntptime.client(host='jp.pool.ntp.org', timezone=9)
 
 
 # 時刻表示スレッド起動

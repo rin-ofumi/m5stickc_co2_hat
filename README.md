@@ -12,7 +12,7 @@ MicroPython project / Co2 HAT & M5StickC / Data storage uses Ambient
 * M5StickCとNDIR式（光学式）CO2センサー「MH-Z19B」を使って、環境のCO2濃度を測定するプログラムです。
 * 「MH-Z19B」をM5StickCへ簡単に装着する為の「Co2 HATキット」（[BOOTHで販売中](https://kitto-yakudatsu.booth.pm/items/1671574)）を使えば、綺麗にケースに収まった状態で使用できます。
 * AmbientというIoTデータ可視化サービスを使って、記録を残すことも可能です。（無料枠で使えます）
-* MicroPythonで記述しています。（ファームウェアは UIFlow 1.4.1-beta を使用）
+* MicroPythonで記述しています。（ファームウェアは UIFlow 1.6.2 を使用）
 
 <br>
 <br>
@@ -28,24 +28,6 @@ MicroPython project / Co2 HAT & M5StickC / Data storage uses Ambient
 ## Ambientライブラリ「ambient.py」※オプション
 Ambientへのデータ送信（記録）を使う場合は、[こちら](https://github.com/AmbientDataInc/ambient-python-lib)のライブラリが必要です。<br>
 「ambient.py」を親機のM5StickCのルートに保存して下さい。<br>
-
-<br>
-
-## NTP時刻同期ライブラリ「ntptime.py」**※必須**
-NTP時刻同期機能は、[こちら](https://github.com/micropython/micropython/blob/master/ports/esp8266/modules/ntptime.py)のライブラリを使っています。<br>
-「ntptime.py」をダウンロードし、下記部分を修正して下さい。（日本時間へ設定を変える為）<br>
-
-```python
-NTP_DELTA = 3155673600
-```
-
-↓<br>
-
-```python
-NTP_DELTA = 3155673600 - (9*60*60)
-```
-
-修正したら「ntptime.py」を親機と子機のM5StickCのルートに保存して下さい。<br>
 
 <br>
 
@@ -89,6 +71,12 @@ M5StickCのプログラム選択モード「APP.List」から起動させる場�
 <br>
 
 # <アップデート履歴>
+
+## 【2020.09.02】 [test_CO2_Ambient.py] Update!
+
+* UIFlow-v1.6.2 ファームへの対応。（公式同梱になったntptimeモジュールに合わせた修正）
+
+<br>
 
 ## 【2020.04.22】 [CO2_zeropoint.py] Update!
 
