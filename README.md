@@ -32,6 +32,7 @@ Ambientへのデータ送信（記録）を使う場合は、[こちら](https:/
 <br>
 
 ## プログラム本体「test_CO2_Ambient.py」**※必須**
+M5StickC・M5StickCPlus用です。（プログラム内で機種自動判別させてます）<br>
 M5StickCのプログラム選択モード「APP.List」から起動させる場合は、親機のM5StickCの「Apps」配下に保存して下さい。<br>
 
 <br>
@@ -58,10 +59,18 @@ M5StickCのプログラム選択モード「APP.List」から起動させる場�
 
 <br>
 
-## M5StickC版のボタン操作
+## M5StickC/Plus版のボタン操作
 
 - Aボタン（M5ロゴの有るボタン）を押すと画面消灯します。もう一度押すと画面点灯します。（CO2濃度が警告閾値を超えてる場合は、強制点灯されます）
 - Bボタン（電源ボタンじゃない方の側面ボタン）を押すと表示が180度回転しますので、設置向きに合わせてお選び下さい。
+
+![M5StickC_1](https://kitto-yakudatsu.com/wp/wp-content/uploads/2019/11/P1230597-scaled.jpg)
+
+![M5StickC_2](https://kitto-yakudatsu.com/wp/wp-content/uploads/2019/11/P1230596-scaled.jpg)
+
+![M5StickC_3](https://kitto-yakudatsu.com/wp/wp-content/uploads/2019/11/P1230600-scaled.jpg)
+
+![M5StickC_4](https://kitto-yakudatsu.com/wp/wp-content/uploads/2019/11/P1230601-scaled.jpg)
 
 <br>
 
@@ -71,6 +80,14 @@ M5StickCのプログラム選択モード「APP.List」から起動させる場�
 <br>
 
 # <アップデート履歴>
+
+## 【2020.09.05】 [test_CO2_Ambient.py] Update!
+
+* M5StickCPlus対応（M5StickC版と同じソースコードで動作します）
+* その他バグFix。
+* ファイル毎の改行コード混在の是正。（LFに統一しました）
+
+<br>
 
 ## 【2020.09.02】 [test_CO2_Ambient.py] Update!
 
