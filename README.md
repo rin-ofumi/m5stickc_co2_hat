@@ -28,6 +28,7 @@ MicroPython project / Co2 HAT & M5StickC / Data storage uses Ambient
 ## Ambientライブラリ「ambient.py」※オプション
 Ambientへのデータ送信（記録）を使う場合は、[こちら](https://github.com/AmbientDataInc/ambient-python-lib)のライブラリが必要です。<br>
 「ambient.py」を親機のM5StickCのルートに保存して下さい。<br>
+※【2020.9.5】最新のAmbient.pyライブラリだと送信エラーになる症状が報告されています。エラーになる場合は、[Mar 17.2018版](https://github.com/AmbientDataInc/ambient-python-lib/tree/751afc4ad2ac5b6d37f236c5660e010a53cf670f)でお試し下さい。<br>
 
 <br>
 
