@@ -19,9 +19,20 @@ axp.setLDO2Vol(2.7) #バックライト輝度調整（中くらい）
 lcd.clear()
 
 
-# MH-19B UART設定
-mhz19b = machine.UART(1, tx=0, rx=26)
+# MH-19B/C UART,GPIO設定    for Rev0.1
+#mhz19b = machine.UART(1, tx=0, rx=26)
+#mhz19b.init(9600, bits=8, parity=None, stop=1)
+
+# MH-19B/C UART,GPIO設定    for Rev0.2
+mhz19b = machine.UART(1, tx=0, rx=36)
 mhz19b.init(9600, bits=8, parity=None, stop=1)
+
+
+# 電源ONでMH-Z19のキャリブレーション処理が起こらない様に、HD端子(G26)を出力＆Highにしておく for Rev0.2
+# ※下記のG26の設定は、M5StickC後期版かPlusの方のみ使えます。HD端子はジャンパーでG26に繋いで下さい。
+# ※M5StickC初期版(電源OFFで[5V OUT]がオフにならないるタイプ)の方は、HD端子を未接続にして下記2行をコメントアウトして下さい。
+#pinout = machine.Pin(26, machine.Pin.OUT)
+#pinout.value(1)
 
 
 # タイムカウンタ初期値設定

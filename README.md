@@ -6,13 +6,15 @@ MicroPython project / Co2 HAT & M5StickC / Data storage uses Ambient
 # <概要>
 
 ![Ambient_Co2_0](https://kitto-yakudatsu.com/wp/wp-content/uploads/2019/11/DSC_0894-scaled.jpg)
+![Co2_socket_0](https://kitto-yakudatsu.com/wp/wp-content/uploads/2021/02/P1270040-1536x1152.jpg)
 
 <br>
 
-* M5StickCとNDIR式（光学式）CO2センサー「MH-Z19B」を使って、環境のCO2濃度を測定するプログラムです。
-* 「MH-Z19B」をM5StickCへ簡単に装着する為の「Co2 HATキット」（[BOOTHで販売中](https://kitto-yakudatsu.booth.pm/items/1671574)）を使えば、綺麗にケースに収まった状態で使用できます。
+* M5StickCとNDIR式（光学式）CO2センサー「MH-Z19B」や「MH-Z19C」を使って、環境のCO2濃度を測定するプログラムです。
+* 「MH-Z19B」をM5StickCへ簡単に装着する為の[「Co2 HATキット」](https://kitto-yakudatsu.booth.pm/items/1671574)を使えば、綺麗にケースに収まった状態で使用できます。
+* 他に、[秋月電子で販売されているピンヘッダー付きの「MH-Z19C」](https://akizukidenshi.com/catalog/g/gM-16142/)に対応した[「Co2 HAT（ソケット版）キット」](https://kitto-yakudatsu.booth.pm/items/2780399)もあります。（コチラは半田付け不要で、より簡単に使用出来ます。）
 * AmbientというIoTデータ可視化サービスを使って、記録を残すことも可能です。（無料枠で使えます）
-* MicroPythonで記述しています。（ファームウェアは UIFlow 1.6.2 を使用）
+* MicroPythonで記述しています。（ファームウェアは UIFlow 1.7.7 を使用）
 
 <br>
 <br>
@@ -36,6 +38,10 @@ Ambientへのデータ送信（記録）を使う場合は、[こちら](https:/
 M5StickC・M5StickCPlus用です。（プログラム内で機種自動判別させてます）<br>
 M5StickCのプログラム選択モード「APP.List」から起動させる場合は、親機のM5StickCの「Apps」配下に保存して下さい。<br>
 
+※2021/5/31以降の販売分より、シリアルポート割当てピンが変更されています。（Rev 0.1: tx=0,rx=26 ⇒ Rev 0.2: tx=0,rx=36）<br>
+※尚、公開しているプログラムは Rev 0.2 をデフォルトとしております。<br>
+※旧Revをお使いの場合は235～241行目のコメントアウト部位を入れ換えて使用して下さい。（詳しくはコード内コメントを参照願います）<br>
+
 <br>
 
 ## 設定ファイル「co2_set.txt」**※オプション**
@@ -44,7 +50,7 @@ M5StickCのプログラム選択モード「APP.List」から起動させる場�
 * CO2濃度の警告閾値を「CO2_RED:」以降に追記して下さい。（単位はppm）
 
 ※全てにおいて、空白文字、"などは含まない様にして下さい<br>
-修正後、親機のM5StickCのルートに保存して下さい。<br>
+※修正後、親機のM5StickCのルートに保存して下さい。<br>
 
 <br>
 
@@ -75,12 +81,22 @@ M5StickCのプログラム選択モード「APP.List」から起動させる場�
 
 <br>
 
-# <参考ページ>
-その他の情報については[ブログ](https://kitto-yakudatsu.com/archives/7286)をご参照下さい。<br>
+# <その他、参考情報>
+* HD端子の接続は非推奨としております。（Co2 HATの出荷状態では未接続です）
+※M5StickC後期版（電源OFFした際に5V OUTが一緒に落ちるタイプ）では使用できますが、M5StickCの外見だけでは判別付かないので、分かる方のみ使用して下さい。<br>
+※尚、Co2 HATのジャンパーピンの処置の変更が必要になる場合もあります。ピンの割り当て方や回路が追える方のみお使い願います。（質問は受け付けかねます）<br>
+* その他の情報については[ブログ](https://kitto-yakudatsu.com/archives/7286)をご参照下さい。<br>
 
 <br>
 
 # <アップデート履歴>
+
+## 【2021.06.02】 [test_CO2_Ambient.py] Update! , [CO2_zeropoint.py] Update! , [CO2_zeropointHD.py] add!
+
+* 基板Rev0.2対応。（Rev0.2からUARTピン割当てが変更されました）
+* HD端子によるゼロポイントキャリブレーション用サンプルプログラム追加（説明は省きます。MH-Z19B/Cの仕様書を読んで、環境構築も含め、ソースが分かる方だけお使い下さい。）
+
+<br>
 
 ## 【2020.09.05】 [test_CO2_Ambient.py] Update!
 
